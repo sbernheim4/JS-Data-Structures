@@ -13,7 +13,7 @@ module.exports = class Stack {
 		if (!this.stack.empty()) {
 			return this.stack[this.size-1]
 		}
-		throw "Stack is empty, cannot peek";
+		throw `Stack is empty, cannot peek`;
 	}
 
 	pop() {
@@ -22,7 +22,7 @@ module.exports = class Stack {
 			this.size -= 1;
 		}
 
-		throw "Stack is empty, cannot pop"
+		throw `Stack is empty, cannot pop`
 	}
 
 	push(val) {

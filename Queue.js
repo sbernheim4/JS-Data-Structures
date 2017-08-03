@@ -1,17 +1,22 @@
 module.exports = class Queue {
 
+
 	constructor() {
 		this.size = 0;
 		this.q = [];
 	}
 
 	dequeue() {
-		const val = this.q[0];
+		if (!this.q.isEmpty()) {
+			const val = this.q[0];
 
-		this.q.splice(0, 1);
-		this.size -= 1;
+			this.q.splice(0, 1);
+			this.size -= 1;
 
-		return val;
+			return val;
+		}
+
+		throw `Queue is empty, cannot dequeue`;
 	}
 
 	enqueue(val) {
@@ -21,6 +26,13 @@ module.exports = class Queue {
 
 	isEmpty() {
 		return this.size === 0;
+	}
+
+	peek() {
+		if (!this.q.isEmpty()) {
+			return this.q[0];
+		}
+		throw `Queue is empty, cannot peek`;
 	}
 
 	size() {

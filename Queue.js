@@ -27,3 +27,4 @@ module.exports = class Queue {
 		return this.size;
 	}
 }
+

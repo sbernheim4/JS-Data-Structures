@@ -1,4 +1,4 @@
-class Stack {
+module.exports = class Stack {
 
 	constructor() {
 		this.size = 0;
@@ -38,6 +38,5 @@ class Stack {
 		});
 		return false;
 	}
-
 }
 

@@ -11,20 +11,33 @@ module.exports = class LinkedList {
 		this.size = 0;
 	}
 
+	getHead() {
+		return this.head;
+	}
+
+	getTail() {
+		return this.tail;
+	}
+
+	getSize() {
+		return this.size;
+	}
+
 	add(data) {
 		this.linkAfter(data);
 	}
 
-	linkAfter(data) {
+	linkAfter(data, node) {
+		// node to be added to the list
 		let newNode = new Node(data);
 
 		if (this.head.next === null) {
-			// If there are no elements in the list
+			// If there are no elements in the list...
 			this.head.next = newNode;
 			newNode.prev = this.head;
 			this.tail = this.head.next;
 		} else {
-			// If there is at least 1 element in the list
+			// If there is at least 1 element in the list...
 			this.tail.next = newNode;
 			newNode.prev = this.tail;
 			this.tail = this.tail.next;

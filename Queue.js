@@ -1,6 +1,5 @@
 module.exports = class Queue {
 
-
 	constructor() {
 		this.size = 0;
 		this.q = [];

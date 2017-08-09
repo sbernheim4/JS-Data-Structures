@@ -33,4 +33,12 @@ module.exports = class LinkedList {
 		this.size += 1;
 	}
 
+	print() {
+		let curr = this.head;
+		while (curr.next !== null) {
+			console.log(curr.next.getData());
+			curr = curr.next;
+		}
+	}
+
 }

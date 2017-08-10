@@ -46,8 +46,8 @@ module.exports = class LinkedList {
 		// Advance curr to the node where the new node will be placed after
 		// add(3, 4) Add a node at index 3 whose data value is 4
 
-		// INDEX: 0     1     2     3     4
-		//    EX: 1 --> 2 --> 3 --> 5 --> 6
+		// INDEX:          0     1     2     3     4
+		//    EX: head --> 1 --> 2 --> 3 --> 5 --> 6
 		//                   curr
 		let curr = this.head;
 		for (var i = 0; i < index; i++) {
@@ -84,7 +84,26 @@ module.exports = class LinkedList {
 
 	remove() {
 		this.tail = this.tail.prev;
+		this.tail.next.prev = null;
 		this.tail.next = null;
+
+		this.size -= 1;
+	}
+
+	// remove(3) --> Remove the node at index 3
+	// INDEX:          0     1     2     3     4
+	//    EX: head --> 1 --> 2 --> 3 --> 4 --> 4
+	//                                  curr
+	remove(index) {
+		let curr = this.head.next;
+		for (var i = 0; i < index; i++) {
+			curr = curr.next;
+		}
+
+		curr.prev.next = curr.next;
+		curr.next.prev = curr.prev;
+
+		return curr;
 	}
 
 	print() {

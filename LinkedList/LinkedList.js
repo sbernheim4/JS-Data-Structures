@@ -23,21 +23,16 @@ module.exports = class LinkedList {
 		return this.size;
 	}
 
-	add(data) {
-		this.linkAfter(data);
-	}
-
-	add(index, data) {
-
-		// Return an error if index < 0
-		if (index < 0 || index > this.size) {
-			return new Error('Index out of Bounds');
+	add(data, index) {
+		// If no index is passed in, or the index is the size of the
+		// list, call linkAfter to add the node to the end of the list.
+		if (index === undefined || index === this.size) {
+			return this.linkAfter(data);
 		}
 
-		// If index specified is greater than the size of the list, add the node to
-		// the end of the list
-		if (index === this.size) {
-			this.linkAfter(data);
+		// Return an error if index < 0 or index > size
+		if (index < 0 || index > this.size) {
+			return new Error('Index out of Bounds');
 		}
 
 		// the new node to be inserted
@@ -45,7 +40,6 @@ module.exports = class LinkedList {
 
 		// Advance curr to the node where the new node will be placed after
 		// add(3, 4) Add a node at index 3 whose data value is 4
-
 		// INDEX:          0     1     2     3     4
 		//    EX: head --> 1 --> 2 --> 3 --> 5 --> 6
 		//                   curr
@@ -79,15 +73,7 @@ module.exports = class LinkedList {
 
 		this.size += 1;
 
-		return True;
-	}
-
-	remove() {
-		this.tail = this.tail.prev;
-		this.tail.next.prev = null;
-		this.tail.next = null;
-
-		this.size -= 1;
+		return true;
 	}
 
 	// remove(3) --> Remove the node at index 3
@@ -95,15 +81,22 @@ module.exports = class LinkedList {
 	//    EX: head --> 1 --> 2 --> 3 --> 4 --> 4
 	//                                  curr
 	remove(index) {
-		let curr = this.head.next;
-		for (var i = 0; i < index; i++) {
-			curr = curr.next;
+		if (index === undefined) {
+			console.log('no index passed in\n');
+			// If index is not passed in, remove the last element in the list
+			this.tail = this.tail.prev;
+			this.tail.next.prev = null;
+			this.tail.next = null;
+		} else {
+			let curr = this.head.next;
+			for (var i = 0; i < index; i++) {
+				curr = curr.next;
+			}
+
+			curr.prev.next = curr.next;
+			curr.next.prev = curr.prev;
 		}
-
-		curr.prev.next = curr.next;
-		curr.next.prev = curr.prev;
-
-		return curr;
+		return this.size -= 1;
 	}
 
 	print() {

@@ -7,11 +7,11 @@ module.exports = class Node {
 	}
 
 	getData() {
-		return this.data
+		return this.data;
 	}
 
 	setData(newVal) {
 		this.data = newVal;
 	}
 
-}
+};

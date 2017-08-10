@@ -2,7 +2,7 @@ const Node = require('./Node.js');
 
 module.exports = class LinkedList {
 
-	constructor(dataVal) {
+	constructor() {
 		this.head = new Node(-1);
 		this.tail = this.head;
 
@@ -31,13 +31,13 @@ module.exports = class LinkedList {
 
 		// Return an error if index < 0
 		if (index < 0 || index > this.size) {
-			return new Error("Index out of Bounds");
+			return new Error('Index out of Bounds');
 		}
 
 		// If index specified is greater than the size of the list, add the node to
 		// the end of the list
 		if (index === this.size) {
-			this.linkAfter(data)
+			this.linkAfter(data);
 		}
 
 		// the new node to be inserted
@@ -90,4 +90,4 @@ module.exports = class LinkedList {
 		}
 	}
 
-}
+};

@@ -24,35 +24,36 @@ module.exports = class LinkedList {
 	}
 
 	add(data, index) {
-		// If no index is passed in, or the index is the size of the
-		// list, call linkAfter to add the node to the end of the list.
-		if (index === undefined || index === this.size) {
-			return this.linkAfter(data);
-		}
-
 		// Return an error if index < 0 or index > size
 		if (index < 0 || index > this.size) {
 			return new Error('Index out of Bounds');
 		}
 
-		// the new node to be inserted
-		let newNode = new Node(data);
+		// If no index is passed in, or the index is the size of the
+		// list, call linkAfter to add the node to the end of the list.
+		if (index === undefined || index === this.size) {
+			this.linkAfter(data);
+		} else {
+			// the new node to be inserted
+			let newNode = new Node(data);
 
-		// Advance curr to the node where the new node will be placed after
-		// add(3, 4) Add a node at index 3 whose data value is 4
-		// INDEX:          0     1     2     3     4
-		//    EX: head --> 1 --> 2 --> 3 --> 5 --> 6
-		//                   curr
-		let curr = this.head;
-		for (var i = 0; i < index; i++) {
-			curr = curr.next;
+			// Advance curr to the node where the new node will be placed after
+			// add(3, 4) Add a node at index 3 whose data value is 4
+			// INDEX:          0     1     2     3     4
+			//    EX: head --> 1 --> 2 --> 3 --> 5 --> 6
+			//                   curr
+			let curr = this.head;
+			for (var i = 0; i < index; i++) {
+				curr = curr.next;
+			}
+
+			// Adjust the pointers
+			newNode.next = curr.next;
+			newNode.prev = curr;
+			curr.next.prev = newNode;
+			curr.next = newNode;
 		}
-
-		// Adjust the pointers
-		newNode.next = curr.next;
-		newNode.prev = curr;
-		curr.next.prev = newNode;
-		curr.next = newNode;
+		return this.size += 1;
 	}
 
 	linkAfter(data) {
@@ -70,10 +71,6 @@ module.exports = class LinkedList {
 			newNode.prev = this.tail;
 			this.tail = this.tail.next;
 		}
-
-		this.size += 1;
-
-		return true;
 	}
 
 	// remove(3) --> Remove the node at index 3

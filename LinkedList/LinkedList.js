@@ -82,6 +82,11 @@ module.exports = class LinkedList {
 		return True;
 	}
 
+	remove() {
+		this.tail = this.tail.prev;
+		this.tail.next = null;
+	}
+
 	print() {
 		let curr = this.head;
 		while (curr.next !== null) {

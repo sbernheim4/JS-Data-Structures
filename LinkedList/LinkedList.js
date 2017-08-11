@@ -26,7 +26,7 @@ module.exports = class LinkedList {
 	add(data, index) {
 		// Return an error if index < 0 or index > size
 		if (index < 0 || index > this.listSize) {
-			return new Error(`Index out of Bounds`);
+			return new Error(`Index: ${index} out of Bounds`);
 		}
 
 		// If no index is passed in, or the index is the size of the list, call

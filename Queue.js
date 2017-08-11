@@ -6,7 +6,7 @@ module.exports = class Queue {
 	}
 
 	dequeue() {
-		if (!this.q.isEmpty()) {
+		if (!this.isEmpty()) {
 			const val = this.q[0];
 
 			this.q.splice(0, 1);
@@ -14,7 +14,6 @@ module.exports = class Queue {
 
 			return val;
 		}
-
 		throw 'Queue is empty, cannot dequeue';
 	}
 
@@ -28,10 +27,11 @@ module.exports = class Queue {
 	}
 
 	peek() {
-		if (!this.q.isEmpty()) {
-			return this.q[0];
+		if (this.isEmpty()) {
+			throw 'Queue is empty, cannot peek';
 		}
-		throw 'Queue is empty, cannot peek';
+
+		return this.q[0];
 	}
 
 	size() {

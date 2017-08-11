@@ -11,11 +11,11 @@ module.exports = class LinkedList {
 		this.listSize = 0;
 	}
 
-	getHead() {
+	head() {
 		return this.head;
 	}
 
-	getTail() {
+	tail() {
 		return this.tail;
 	}
 
@@ -100,11 +100,27 @@ module.exports = class LinkedList {
 		return this.listSize -= 1;
 	}
 
+	peek() {
+		return this.head.next;
+	}
+
+	toArray() {
+		let curr = this.head;
+		let arr = [];
+
+		while (curr.next !== null) {
+			curr = curr.next;
+			arr.push(curr.getData());
+		}
+
+		return arr;
+	}
+
 	print() {
 		let curr = this.head;
 		while (curr.next !== null) {
-			console.log(curr.next.getData());
 			curr = curr.next;
+			console.log(curr.getData());
 		}
 	}
 

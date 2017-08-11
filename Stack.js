@@ -38,5 +38,9 @@ module.exports = class Stack {
 		});
 		return false;
 	}
+
+	size() {
+		return this.size;
+	}
 };
 

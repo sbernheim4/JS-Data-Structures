@@ -1,4 +1,4 @@
-const Node = require('./Node.js');
+const Node = require(`./Node.js`);
 
 module.exports = class LinkedList {
 
@@ -26,11 +26,12 @@ module.exports = class LinkedList {
 	add(data, index) {
 		// Return an error if index < 0 or index > size
 		if (index < 0 || index > this.listSize) {
-			return new Error('Index out of Bounds');
+			return new Error(`Index out of Bounds`);
 		}
 
-		// If no index is passed in, or the index is the size of the
-		// list, call linkAfter to add the node to the end of the list.
+		// If no index is passed in, or the index is the size of the list, call
+		// linkAfter to add the node to the end of the list. Otherwise insert the
+		// node at the index specified
 		if (index === undefined || index === this.listSize) {
 			this.linkAfter(data);
 		} else {
@@ -41,7 +42,7 @@ module.exports = class LinkedList {
 			// add(3, 4) Add a node at index 3 whose data value is 4
 			// INDEX:          0     1     2     3     4
 			//    EX: head --> 1 --> 2 --> 3 --> 5 --> 6
-			//                   curr
+			//                           curr
 			let curr = this.head;
 			for (var i = 0; i < index; i++) {
 				curr = curr.next;
@@ -78,8 +79,11 @@ module.exports = class LinkedList {
 	//    EX: head --> 1 --> 2 --> 3 --> 4 --> 4
 	//                                  curr
 	remove(index) {
+		if (index >= this.listSize || index < 0) {
+			throw new Error(`Index: ${index} out of bounds`);
+		}
+
 		if (index === undefined) {
-			console.log('no index passed in\n');
 			// If index is not passed in, remove the last element in the list
 			this.tail = this.tail.prev;
 			this.tail.next.prev = null;

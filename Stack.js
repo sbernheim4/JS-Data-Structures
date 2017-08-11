@@ -5,29 +5,29 @@ module.exports = class Stack {
 		this.stack = [];
 	}
 
-	empty() {
+	isEmpty() {
 		return this.size === 0;
 	}
 
 	peek() {
-		if (!this.stack.empty()) {
-			return this.stack[this.size-1];
+		if (this.isEmpty()) {
+			throw 'Stack is empty, cannot peek';
 		}
-		throw 'Stack is empty, cannot peek';
+
+		return this.stack[this.size-1];
 	}
 
 	pop() {
-		if(this.size > 0) {
-			this.stack.splice(this.size-1, 1);
-			this.size -= 1;
+		if (this.isEmpty()) {
+			throw 'Stack is empty, cannot pop';
 		}
-
-		throw 'Stack is empty, cannot pop';
+		this.stack.splice(this.size-1, 1);
+		this.size -= 1;
 	}
 
 	push(val) {
-		this.size += 1;
 		this.stack.push(val);
+		this.size += 1;
 	}
 
 	search(val) {

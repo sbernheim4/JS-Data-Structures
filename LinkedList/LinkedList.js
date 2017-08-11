@@ -116,6 +116,12 @@ module.exports = class LinkedList {
 		return arr;
 	}
 
+	clear() {
+		this.head.next = null;
+		this.tail = this.head;
+		this.size = 0;
+	}
+
 	print() {
 		let curr = this.head;
 		while (curr.next !== null) {

@@ -14,7 +14,7 @@ module.exports = class Queue {
 
 			return val;
 		}
-		return new Error( `Queue is empty, cannot dequeue`);
+		throw(`Queue is empty, cannot dequeue`);
 	}
 
 	enqueue(val) {
@@ -28,7 +28,7 @@ module.exports = class Queue {
 
 	peek() {
 		if (this.isEmpty()) {
-			return new Error(`Queue is empty, cannot peek`);
+			throw(`Queue is empty, cannot peek`);
 		}
 
 		return this.q[0];

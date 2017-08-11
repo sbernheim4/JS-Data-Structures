@@ -11,7 +11,7 @@ module.exports = class Stack {
 
 	peek() {
 		if (this.isEmpty()) {
-			return new Error(`Stack is empty, cannot peek`);
+			throw(`Stack is empty, cannot peek`);
 		}
 
 		return this.stack[this.stackSize-1];
@@ -19,7 +19,7 @@ module.exports = class Stack {
 
 	pop() {
 		if (this.isEmpty()) {
-			return new Error(`Stack is empty, cannot pop`);
+			throw(`Stack is empty, cannot pop`);
 		}
 		this.stack.splice(this.stackSize-1, 1);
 		this.stackSize -= 1;

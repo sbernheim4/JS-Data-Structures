@@ -1,12 +1,12 @@
 module.exports = class Stack {
 
 	constructor() {
-		this.size = 0;
+		this.stackSize = 0;
 		this.stack = [];
 	}
 
 	isEmpty() {
-		return this.size === 0;
+		return this.stackSize === 0;
 	}
 
 	peek() {
@@ -14,20 +14,20 @@ module.exports = class Stack {
 			throw 'Stack is empty, cannot peek';
 		}
 
-		return this.stack[this.size-1];
+		return this.stack[this.stackSize-1];
 	}
 
 	pop() {
 		if (this.isEmpty()) {
 			throw 'Stack is empty, cannot pop';
 		}
-		this.stack.splice(this.size-1, 1);
-		this.size -= 1;
+		this.stack.splice(this.stackSize-1, 1);
+		this.stackSize -= 1;
 	}
 
 	push(val) {
 		this.stack.push(val);
-		this.size += 1;
+		this.stackSize += 1;
 	}
 
 	search(val) {
@@ -40,7 +40,7 @@ module.exports = class Stack {
 	}
 
 	size() {
-		return this.size;
+		return this.stackSize;
 	}
 };
 

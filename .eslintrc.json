@@ -4,6 +4,10 @@
         "node": true
     },
     "extends": "eslint:recommended",
+	"globals": {
+		"expect": true,
+		"test": true
+	},
     "rules": {
         "indent": [
             "error",

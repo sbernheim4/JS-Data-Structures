@@ -11,11 +11,11 @@ module.exports = class LinkedList {
 		this.listSize = 0;
 	}
 
-	head() {
+	getHead() {
 		return this.head;
 	}
 
-	tail() {
+	getTail() {
 		return this.tail;
 	}
 

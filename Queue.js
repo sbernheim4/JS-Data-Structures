@@ -1,7 +1,7 @@
 module.exports = class Queue {
 
 	constructor() {
-		this.size = 0;
+		this.queueSize = 0;
 		this.q = [];
 	}
 
@@ -10,7 +10,7 @@ module.exports = class Queue {
 			const val = this.q[0];
 
 			this.q.splice(0, 1);
-			this.size -= 1;
+			this.queueSize -= 1;
 
 			return val;
 		}
@@ -19,11 +19,11 @@ module.exports = class Queue {
 
 	enqueue(val) {
 		this.q.push(val);
-		this.size += 1;
+		this.queueSize += 1;
 	}
 
 	isEmpty() {
-		return this.size === 0;
+		return this.queueSize === 0;
 	}
 
 	peek() {
@@ -35,7 +35,7 @@ module.exports = class Queue {
 	}
 
 	size() {
-		return this.size;
+		return this.queueSize;
 	}
 };
 

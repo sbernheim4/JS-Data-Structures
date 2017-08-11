@@ -32,7 +32,7 @@ test ('peek is 1 when additional value is enqueued', () => {
 	expect(q.peek()).toBe(1);
 });
 
-test ('size of queue is 2 when it has 2 elements', () => {
+test ('size is 2 when queue has two elements', () => {
 	expect(q.size()).toBe(2);
 });
 

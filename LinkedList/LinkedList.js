@@ -8,7 +8,7 @@ module.exports = class LinkedList {
 
 		// If no initial value was passed in, the size of the linked list should be 0
 		// otherwise it should be 1
-		this.size = 0;
+		this.listSize = 0;
 	}
 
 	getHead() {
@@ -19,19 +19,19 @@ module.exports = class LinkedList {
 		return this.tail;
 	}
 
-	getSize() {
-		return this.size;
+	size() {
+		return this.listSize;
 	}
 
 	add(data, index) {
 		// Return an error if index < 0 or index > size
-		if (index < 0 || index > this.size) {
+		if (index < 0 || index > this.listSize) {
 			return new Error('Index out of Bounds');
 		}
 
 		// If no index is passed in, or the index is the size of the
 		// list, call linkAfter to add the node to the end of the list.
-		if (index === undefined || index === this.size) {
+		if (index === undefined || index === this.listSize) {
 			this.linkAfter(data);
 		} else {
 			// the new node to be inserted
@@ -53,7 +53,7 @@ module.exports = class LinkedList {
 			curr.next.prev = newNode;
 			curr.next = newNode;
 		}
-		return this.size += 1;
+		return this.listSize += 1;
 	}
 
 	linkAfter(data) {
@@ -93,7 +93,7 @@ module.exports = class LinkedList {
 			curr.prev.next = curr.next;
 			curr.next.prev = curr.prev;
 		}
-		return this.size -= 1;
+		return this.listSize -= 1;
 	}
 
 	print() {

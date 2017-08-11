@@ -3,7 +3,7 @@ const Node = require(`./Node.js`);
 module.exports = class LinkedList {
 
 	constructor() {
-		this.head = new Node(-1);
+		this.head = new Node(null);
 		this.tail = this.head;
 
 		// If no initial value was passed in, the size of the linked list should be 0
@@ -54,6 +54,7 @@ module.exports = class LinkedList {
 			curr.next.prev = newNode;
 			curr.next = newNode;
 		}
+
 		return this.listSize += 1;
 	}
 
@@ -97,6 +98,7 @@ module.exports = class LinkedList {
 			curr.prev.next = curr.next;
 			curr.next.prev = curr.prev;
 		}
+
 		return this.listSize -= 1;
 	}
 
@@ -119,7 +121,7 @@ module.exports = class LinkedList {
 	clear() {
 		this.head.next = null;
 		this.tail = this.head;
-		this.size = 0;
+		this.listSize = 0;
 	}
 
 	print() {

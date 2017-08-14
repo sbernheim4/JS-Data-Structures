@@ -23,16 +23,24 @@ module.exports = class LinkedList {
 		return this.listSize;
 	}
 
+	isEmpty() {
+		return this.size() === 0;
+	}
+
 	add(data, index) {
 		// Return an error if index < 0 or index > size
-		if (index < 0 || index > this.listSize) {
-			return new Error(`Index: ${index} out of Bounds`);
+		if (index < 0 || index > this.size()) {
+			throw(`Index: ${index} out of Bounds`);
+		}
+
+		if (data === null || data === undefined) {
+			throw(`Value being added cannot be null or undefined`);
 		}
 
 		// If no index is passed in, or the index is the size of the list, call
 		// linkAfter to add the node to the end of the list. Otherwise insert the
 		// node at the index specified
-		if (index === undefined || index === this.listSize) {
+		if (index === undefined || index === this.size()) {
 			this.linkAfter(data);
 		} else {
 			// the new node to be inserted
@@ -80,8 +88,13 @@ module.exports = class LinkedList {
 	//    EX: head --> 1 --> 2 --> 3 --> 4 --> 4
 	//                                  curr
 	remove(index) {
-		if (index >= this.listSize || index < 0) {
-			throw new Error(`Index: ${index} out of bounds`);
+
+		if (this.isEmpty()) {
+			throw(`List is empty, no elements to remove`);
+		}
+
+		if (index >= this.size() || index < 0) {
+			throw(`Index: ${index} out of bounds`);
 		}
 
 		if (index === undefined) {

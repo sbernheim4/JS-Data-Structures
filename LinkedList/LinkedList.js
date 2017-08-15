@@ -27,6 +27,17 @@ module.exports = class LinkedList {
 		return this.size() === 0;
 	}
 
+	getElementAtIndex(index) {
+
+		let curr = this.getHead();
+
+		for (var i = 0; i < index+1; i++) {
+			curr = curr.next;
+		}
+
+		return curr.getData();
+	}
+
 	add(data, index) {
 		// Return an error if index < 0 or index > size
 		if (index < 0 || index > this.size()) {

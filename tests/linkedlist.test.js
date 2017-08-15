@@ -25,7 +25,7 @@ test(`isEmpty is false when list is not empty`, () => {
 	list.add(1);
 	list.add(2);
 	list.add(4);
-	expect(list.isEmpty()).toBe(false)
+	expect(list.isEmpty()).toBe(false);
 });
 
 test(`peek returns correct value`, () => {
@@ -38,28 +38,28 @@ test(`size is 1 when one element is added to the list`, () => {
 
 test(`add using invalid index throws error`, () => {
 	expect(() => {
-		list.add(5, list.size() + 1)
+		list.add(5, list.size() + 1);
 	}).toThrow();
 
 	expect(() => {
-		list.add(5, -1)
+		list.add(5, -1);
 	}).toThrow();
 
 });
 
 test(`add invalid data throws error`, () => {
 	expect(() => {
-		list.add(null)
+		list.add(null);
 	}).toThrow();
 
 	expect(() => {
 		list.add(undefined);
-	}).toThrow
+	}).toThrow();
 });
 
 test(`add using index yields correct output`, () => {
 	list.add(3, 2);
 	expect(list.getElementAtIndex(2)).toBe(3);
-})
+});
 
 

@@ -5,7 +5,7 @@ module.exports = class HashTable {
 		this.numElements = 0;
 		this.maxSize = max;
 		this.hashTable = new Array(max);
-		this.loadFactor = 0l
+		this.loadFactor = 0;
 	}
 
 
@@ -27,16 +27,54 @@ module.exports = class HashTable {
 		return this.numElements;
 	}
 
+	isEmpty() {
+		return this.size() === 0;
+	}
+
+	clear() {
+		this.numElements = 0;
+		this.hashTable = new Array(this.totalCapacity());
+		this.loadFactor = 0;
+	}
+
+	containsValue(value) {
+		this.hashTable.forEach(val => {
+			if (val === value) {
+				return true;
+			}
+		});
+
+		return false;
+	}
+
+	get(key) {
+		if (this.hashTable[this.hOne(key)].key === key) {
+			return this.hashTable[this.hOne(key)];
+		} else if (this.hashTable[this.hTwo(key)].key === key) {
+			return this.hashTable[this.hTwo(key)];
+		} else {
+			return null;
+		}
+	}
+
+	remove(key) {
+		if (this.hashTable[this.hOne(key)].key === key) {
+			this.hashTable[this.hOne(key)] = undefined;
+		} else if (this.hashTable[this.hTwo(key)].key === key) {
+			this.hashTable[this.hTwo(key)] = undefined;
+		}
+	}
+
 	insert(obj) {
 		let detectCycle = -1;
 		this._insert(obj, this.hOne(obj.key), detectCycle);
 		this.numElements++;
-		this.performRehash(false);
+		this.rehash(false);
 	}
 
 	_insert(obj, hashedValue, detectCycle) {
 		if (hashedValue === detectCycle) {
-			this.performRehash(true);
+			this.rehash(true);
 		}
 
 		if (this.hashTable[hashedValue] === undefined) {
@@ -53,7 +91,7 @@ module.exports = class HashTable {
 	}
 
 
-	performRehash(forced) {
+	rehash(forced) {
 		const loadFactor = this.size()/this.totalCapacity();
 
 		if (loadFactor >= .6 || forced) {

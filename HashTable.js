@@ -37,6 +37,15 @@ module.exports = class HashTable {
 		this.loadFactor = 0;
 	}
 
+	containsKey(key) {
+		let temp = this.get(key);
+		return temp.key === key;
+	}
+
+	contains(value) {
+		this.containsValue(value);
+	}
+
 	containsValue(value) {
 		this.hashTable.forEach(object => {
 			if (object.value === value) {

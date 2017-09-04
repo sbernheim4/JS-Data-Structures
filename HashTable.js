@@ -38,8 +38,8 @@ module.exports = class HashTable {
 	}
 
 	containsValue(value) {
-		this.hashTable.forEach(val => {
-			if (val === value) {
+		this.hashTable.forEach(object => {
+			if (object.value === value) {
 				return true;
 			}
 		});

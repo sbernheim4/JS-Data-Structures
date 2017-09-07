@@ -5,7 +5,6 @@ module.exports = class HashTable {
 		this.numElements = 0;
 		this.maxSize = max;
 		this.hashTable = new Array(max);
-		this.loadFactor = 0;
 	}
 
 
@@ -34,7 +33,6 @@ module.exports = class HashTable {
 	clear() {
 		this.numElements = 0;
 		this.hashTable = new Array(this.totalCapacity());
-		this.loadFactor = 0;
 	}
 
 	containsKey(key) {
@@ -56,28 +54,31 @@ module.exports = class HashTable {
 		return false;
 	}
 
-	get(key) {
-		if (this.hashTable[this.hOne(key)].key === key) {
-			return this.hashTable[this.hOne(key)];
-		} else if (this.hashTable[this.hTwo(key)].key === key) {
-			return this.hashTable[this.hTwo(key)];
+	get(objKey) {
+		let objOne = this.hashTable[this.hOne(objKey)];
+		let objTwo = this.hashTable[this.hTwo(objKey)];
+
+		if (objOne !== undefined && objOne.key === objKey) {
+			return objOne;
+		} else if (objTwo !== undefined && objTwo.key === objKey) {
+			return objTwo;
 		} else {
 			return null;
 		}
 	}
 
-	remove(key) {
-		if (this.hashTable[this.hOne(key)].key === key) {
-			this.hashTable[this.hOne(key)] = undefined;
-		} else if (this.hashTable[this.hTwo(key)].key === key) {
-			this.hashTable[this.hTwo(key)] = undefined;
+	remove(objKey) {
+		if (this.hashTable[this.hOne(objKey)].key === objKey) {
+			this.hashTable[this.hOne(objKey)] = undefined;
+		} else if (this.hashTable[this.hTwo(objKey)].key === objKey) {
+			this.hashTable[this.hTwo(objKey)] = undefined;
 		}
 	}
 
 	insert(obj) {
 		let detectCycle = -1;
 		this._insert(obj, this.hOne(obj.key), detectCycle);
-		this.numElements++;
+		this.numElements = this.numElements + 1;
 		this.rehash(false);
 	}
 

@@ -78,3 +78,9 @@ test(`removal of object with key of 11 works`, () => {
 	table.remove(11);
 	expect(table.get(11)).toBe(null);
 });
+
+test(`clear function resets hashtable`, () => {
+	table.clear();
+	expect(table.size()).toBe(0);
+	expect(table.isEmpty()).toBe(true);
+})

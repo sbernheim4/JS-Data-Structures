@@ -83,4 +83,4 @@ test(`clear function resets hashtable`, () => {
 	table.clear();
 	expect(table.size()).toBe(0);
 	expect(table.isEmpty()).toBe(true);
-})
+});

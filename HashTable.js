@@ -1,6 +1,5 @@
 module.exports = class HashTable {
 
-
 	constructor(max = 50) {
 		this.numElements = 0;
 		this.maxSize = max;

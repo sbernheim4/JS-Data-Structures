@@ -56,7 +56,17 @@ module.exports = class MaxHeap {
 	}
 
 	buildMaxHeap(array) {
-		return array;
+		this.heap = [];
+		this.heapSize = 0;
+
+		array.forEach((val) => {
+			this.insert(val);
+		});
+	}
+
+	clear() {
+		this.heap = [];
+		this.heapSize = 0;
 	}
 
 	print() {

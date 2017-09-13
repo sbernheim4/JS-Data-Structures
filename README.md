@@ -1,6 +1,6 @@
 # About
 
-This repo contains implementations of various data structures all written in JS. I am using Facebook's Jest testing framework as well to write tests for the different data strutures I implement. All tests are in the tests folder. Any DS that have multiple components will be in their own folder.
+This repo contains implementations of various data structures all written in JS. I am using Facebook's Jest testing framework as well to write tests for the different data strutures I implement. All tests are in the tests folder. Any DS that has multiple components will be in their own folder.
 
 # Data Structures
 
@@ -10,4 +10,3 @@ This repo contains implementations of various data structures all written in JS.
 - [x] HashTable
 - [ ] Heap
 - [ ] Hashmap
-- [ ] Binary Tree
